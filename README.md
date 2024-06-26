@@ -41,6 +41,10 @@ To set up lifecycle scripts:
    aws sagemaker create-cluster --cli-input-json file://cluster-config.json --region $AWS_REGION
    ```
 
+[Example can be found at  in ClusterConfig](./ClusterConfig)
+
+ 
+
 ### Scaling the Cluster
 
 To increase worker instances:
@@ -48,8 +52,13 @@ To increase worker instances:
 1. Update `cluster-config.json` with the new instance count.
 2. Run:
    ```bash
-   aws sagemaker update-cluster --cluster-name $my-cluster-name --instance-groups file://update-cluster-config.json --region $AWS_REGION
+   aws sagemaker update-cluster \
+    --cluster-name ml-cluster \
+    --instance-groups file://update-cluster-config.json \
+    --region $AWS_REGION
    ```
+
+[Example can be found at  in ClusterConfig](./ClusterConfig)
 
 ### Shutting Down the Cluster
 
@@ -145,7 +154,7 @@ Based on the [Moore-AnimateAnyone repository](https://github.com/MooreThreads/Mo
 sbatch submit-animateanyone-algo.sh
 ```
 
-Note: For smaller GPU instances (e.g., G5 2xlarge), adjust `train_bs: 2` and `train_width: 128 train_height: 128` to avoid out-of-memory issues.
+Note: For smaller GPU instances (e.g., G5 2xlarge), adjust `train_bs: 2` and `train_width: 256 train_height: 256 ` to avoid out-of-memory issues. [See one configuration example in AlgoSlurm](./AlgoSlurm)
 
 #### Hyperparameter Testing
 ```bash
