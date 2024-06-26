@@ -41,10 +41,9 @@ To set up lifecycle scripts:
    aws sagemaker create-cluster --cli-input-json file://cluster-config.json --region $AWS_REGION
    ```
 
-[Example can be found at  in ClusterConfig](./ClusterConfig)
+Example of [`cluster-config.json` and `provisioning_parameters.json` can be found at  in ClusterConfig](./ClusterConfig)
 
  
-
 ### Scaling the Cluster
 
 To increase worker instances:
@@ -53,17 +52,18 @@ To increase worker instances:
 2. Run:
    ```bash
    aws sagemaker update-cluster \
-    --cluster-name ml-cluster \
+    --cluster-name ${my-cluster-name} \
     --instance-groups file://update-cluster-config.json \
     --region $AWS_REGION
    ```
 
-[Example can be found at  in ClusterConfig](./ClusterConfig)
+Example of [`update-cluster-config.json` can be found at  in ClusterConfig](./ClusterConfig)
+
 
 ### Shutting Down the Cluster
 
 ```bash
-aws sagemaker delete-cluster --cluster-name $my-cluster-name
+aws sagemaker delete-cluster --cluster-name ${my-cluster-name}
 ```
 
 ### Notes

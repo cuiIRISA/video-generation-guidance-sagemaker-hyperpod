@@ -10,7 +10,7 @@ sbatch submit-animateanyone-algo.sh
 
 The slurm job will allocate single node (single GPU if g5.2xlarge instance), activate the training envoniroment and run accelerate launch train_stage_1.py --config configs/train/stage1.yaml
 
-Note: For smaller GPU instances (e.g., G5 2xlarge), adjust `train_bs: 2` and `train_width: 256 train_height: 256 ` to avoid out-of-memory issues.
+Note: For smaller GPU instances (e.g., G5 2xlarge), adjust `train_bs: 2` `train_width: 256 train_height: 256 ` and   `use_8bit_adam: True` to avoid out-of-memory issues.
 
 
 #### Hyperparameter Testing

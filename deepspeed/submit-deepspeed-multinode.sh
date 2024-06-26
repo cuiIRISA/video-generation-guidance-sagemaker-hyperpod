@@ -1,53 +1,50 @@
 #!/bin/bash
 #SBATCH --job-name=multinode-video-gen
-#SBATCH -N 4
+#SBATCH -N 2
 #SBATCH --ntasks-per-node=1
 
-export GPUS_PER_NODE=1
+export GPUS_PER_NODE=4
 export OMP_NUM_THREADS=1
 
 # Activate the conda environment
 source ~/miniconda3/bin/activate
 conda activate videogen
+#pip install accelerate==0.31.0
+
 
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1)
 export MASTER_PORT=$(( RANDOM % (50000 - 30000 + 1 ) + 30000 ))
 export NNODES=$SLURM_NNODES
 export NUM_PROCESSES=$(expr $NNODES \* $GPUS_PER_NODE)
 
-
 # force crashing on nccl issues like hanging broadcast
 export NCCL_ASYNC_ERROR_HANDLING=1
-# export NCCL_DEBUG=INFO
-# export NCCL_DEBUG_SUBSYS=COLL
-# export NCCL_SOCKET_NTHREADS=1
-# export NCCL_NSOCKS_PERTHREAD=1
-# export CUDA_LAUNCH_BLOCKING=1
+#export NCCL_DEBUG=INFO
 
 # AWS specific
-export NCCL_PROTO=simple
-export RDMAV_FORK_SAFE=1
-export FI_EFA_FORK_SAFE=1
-export FI_EFA_USE_DEVICE_RDMA=1
-export FI_PROVIDER=efa
-export FI_LOG_LEVEL=1
 export NCCL_IB_DISABLE=1
 export NCCL_SOCKET_IFNAME=ens
+export NCCL_IGNORE_DISABLED_P2P=1
+
+## EFA settings
+export FI_LOG_LEVEL=1
+export FI_PROVIDER=efa  
+export FI_EFA_USE_HUGE_PAGE=0
+
 
 # CHANGE TO CUMMULATIVELY LOG OUTPUTS
-LOG_PATH="video_gen_deepspeed_output.log"
+LOG_PATH="video_gen_distributed_deepspeed_output.log"
 
-
-# OTHER LAUNCHERS CAN BE USED HERE
+# Update the accelerate launch command
 export LAUNCHER="accelerate launch \
-    --config_file accelerate_config.yaml \
-    --main_process_ip $MASTER_ADDR \
-    --main_process_port $MASTER_PORT \
-    --machine_rank \$SLURM_PROCID \
+    --config_file ds_config.yaml \
     --num_processes $NUM_PROCESSES \
     --num_machines $NNODES \
+    --main_process_ip $MASTER_ADDR \
+    --main_process_port $MASTER_PORT \
+    --machine_rank \${SLURM_PROCID} \
+    --deepspeed_multinode_launcher standard \
     "
-# Note: it is important to escape `$SLURM_PROCID` since we want the srun on each node to evaluate this variable
 
 export PROGRAM="\
 train_stage_1.py \
