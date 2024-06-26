@@ -178,7 +178,7 @@ Use MLflow for visualization:
 mlflow ui --backend-store-uri ./mlruns/
 ```
 
-![ML flow](./img/mlflow)
+![ML flow](./img/mlflow.png)
 
 
 ## Additional Resources
