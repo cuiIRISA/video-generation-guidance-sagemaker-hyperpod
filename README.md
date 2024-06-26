@@ -150,6 +150,9 @@ Based on the [Moore-AnimateAnyone repository](https://github.com/MooreThreads/Mo
 ### Running Experiments
 
 #### Single Node Job
+
+The detailed instructions can be found in [here](./AlgoSlurm) 
+
 ```bash
 sbatch submit-animateanyone-algo.sh
 ```
@@ -161,6 +164,12 @@ Note: For smaller GPU instances (e.g., G5 2xlarge), adjust `train_bs: 2` and `tr
 sbatch submit-hyperparameter-testing.sh
 ```
 
+
+#### Multi-Node Job with DeepSpeed
+
+The detailed instructions can be found in [here](./DeepSpeed) 
+
+
 ### Monitoring Experiments
 
 Use MLflow for visualization:
@@ -168,6 +177,9 @@ Use MLflow for visualization:
 ```bash
 mlflow ui --backend-store-uri ./mlruns/
 ```
+
+![ML flow](./img/mlflow)
+
 
 ## Additional Resources
 
