@@ -9,6 +9,7 @@ export OMP_NUM_THREADS=1
 # Activate the conda environment
 source ~/miniconda3/bin/activate
 conda activate videogen
+
 #pip install accelerate==0.31.0
 
 
