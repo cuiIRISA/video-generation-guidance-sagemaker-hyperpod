@@ -167,8 +167,9 @@ sbatch submit-hyperparameter-testing.sh
 
 #### Multi-Node Job with DeepSpeed
 
-The detailed instructions can be found in [here](./DeepSpeed) 
+The detailed instructions can be found in [here](./DeepSpeedDistributed) 
 
+The folder contains the single node multi-GPUs setup, as well as the multi-mode multi-GPUs Slurm launch file. 
 
 ### Monitoring Experiments
 
