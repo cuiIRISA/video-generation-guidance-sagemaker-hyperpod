@@ -186,6 +186,7 @@ mlflow ui --backend-store-uri ./mlruns/
 
 - [Original Moore-AnimateAnyone Repository](https://github.com/MooreThreads/Moore-AnimateAnyone)
 - [SageMaker Hyperpod Workshop Studio](https://catalog.workshops.aws/sagemaker-hyperpod/en-US)
+- [Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation](https://arxiv.org/abs/2311.17117)
 
 ## Notes
 
