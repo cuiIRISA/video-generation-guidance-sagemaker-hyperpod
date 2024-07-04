@@ -34,5 +34,6 @@ To run a job across multiple nodes, each with multiple GPUs:
 sbatch submit-deepspeed-multinode.sh
 ```
 
-**Note:** We have tested this distribution with two g5.24xlarge instances. Once executed successfully, you will have a log similar to  [`./video_gen_deepspeed_output_stage_1.log`](./video_gen_deepspeed_output_stage_1.log)
 
+**Note:** We have tested this distribution with two g5.24xlarge instances. Once executed successfully, you will have a log similar to  [`./video_gen_deepspeed_output_stage_1.log`](./video_gen_deepspeed_output_stage_1.log)
+When running with `train_stage_2.py`, we reduced the n_sample_frames: 3 to avoid out of memory when using g5.24xlarge instance. Once executed successfully, you will have a log similar to  [`./video_gen_deepspeed_output_stage_2.log`](./video_gen_deepspeed_output_stage_2.log). 
