@@ -184,9 +184,19 @@ mlflow ui --backend-store-uri ./mlruns/
 
 ## Additional Resources
 
+Recent advancements in video generation have rapidly overcome limitations of earlier models like Animate Anyone. Two notable research papers showcase significant progress in this domain:
+- Champ: Controllable and Consistent Human Image Animation with 3D Parametric Guidance enhances shape alignment and motion guidance. It demonstrates superior ability in generating high-quality human animations that accurately capture both pose and shape variations, with improved generalization on in-the-wild datasets.
+- UniAnimate: Taming Unified Video Diffusion Models for Consistent Human Image Animation enables the generation of longer videos, up to one minute, compared to earlier models' limited frame outputs. It introduces a unified noise input supporting both random noised input and first frame conditioned input, enhancing long-term video generation capabilities.
+
+As research in this field rapidly progresses, SageMaker Hyperpod prove invaluable for AI research and experimentation. It provides the necessary computational resources and flexibility to quickly implement and test innovative ideas, accelerating advancements in video generation and related AI technologies. SageMaker Hyperpod's scalable infrastructure allows researchers to efficiently train and fine-tune large models, reducing the time from concept to implementation. Its integrated development environment streamlines the workflow, enabling faster iterations and more comprehensive experiments. By leveraging such advanced cloud computing solutions, researchers can push the boundaries of what's possible in video generation, potentially leading to breakthroughs in areas like virtual reality, film production, and interactive digital media.
+
+
+
 - [Original Moore-AnimateAnyone Repository](https://github.com/MooreThreads/Moore-AnimateAnyone)
 - [SageMaker Hyperpod Workshop Studio](https://catalog.workshops.aws/sagemaker-hyperpod/en-US)
 - [Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation](https://arxiv.org/abs/2311.17117)
+- [Champ: Controllable and Consistent Human Image Animation with 3D Parametric Guidance](https://arxiv.org/abs/2403.14781)
+- [UniAnimate: Taming Unified Video Diffusion Models for Consistent Human Image Animation](https://arxiv.org/abs/2406.01188)
 
 ## Notes
 
